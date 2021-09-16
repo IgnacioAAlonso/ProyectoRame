@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+main{
+    width: 75%;
+    align-self: center;
+}
+
+.bordes2{
+ width: 490px;
+}
+
+.bordes{
+    border: solid black;
+}
+
+.textCenter{
+    text-align: center;
+}
+
+.navMenu{
+    width: 10%;
+    height: 50vh;
+    position: absolute;
+        top: 0;
+}
+
+@media only screen and (max-width: 991px){
+    .menuBar{
+        width: 100%;
+    }
+
+    .bordes2{
+        width: 100%;
+    }
+}
