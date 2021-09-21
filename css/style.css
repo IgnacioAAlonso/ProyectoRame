@@ -29,6 +29,60 @@ main{
         top: 0;
 }
 
+/* ----- PORTADA ----- */
+
+.portada{
+    width: 100vw;
+    margin-left: -20%;
+    height: 100vh;
+    position: relative;
+}
+.portada__contenedorImagen{
+    width: 70%;
+    height: 90%;
+    margin: 2% 0 0 3%;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.portada__contenedorTitulo{
+    position: relative;
+    z-index: 1;
+    width: auto;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.portada__contenedorTitulo-box{
+    text-align: left;
+    margin-left: 15%;
+}
+
+.portada__contenedorTitulo-titulo{
+    text-transform: uppercase;
+}
+
+.portada__contenedorTitulo-subtitulo{
+    text-transform: uppercase;
+}
+.boxDesafio-contenedor{
+    display: flex;
+}
+.boxDesafio{
+    border: solid black 5px;
+    margin: 8px;
+    margin-left: 0;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
 @media only screen and (max-width: 991px){
     .menuBar{
         width: 100%;
