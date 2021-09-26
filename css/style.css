@@ -60,13 +60,21 @@ main{
 .portada__contenedorTitulo-box{
     text-align: left;
     margin-left: 15%;
+    width: 43%;
 }
 
 .portada__contenedorTitulo-titulo{
+    font-weight: bold;
+    font-size: large;
+    letter-spacing: 1.5mm;
     text-transform: uppercase;
 }
 
 .portada__contenedorTitulo-subtitulo{
+    font-weight: bold;
+    font-size: 15mm;
+    letter-spacing: 2mm;
+    word-spacing: 1.5mm;
     text-transform: uppercase;
 }
 .boxDesafio-contenedor{
@@ -81,6 +89,26 @@ main{
     color: black;
     align-self: flex-start;
     justify-self: flex-start;
+}
+
+.favoritos__subtitulo{
+    font-weight: bold;
+    font-size: 15mm;
+    letter-spacing: 2.5mm;
+    word-spacing: 1.5mm;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 5% 0 5% 0;
+}
+.container__favoritos-box{
+    margin-bottom: 100px;
+}
+
+.container__jabonesImagen-img{
+    width: 100%;
+    height: 401px;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
 @media only screen and (max-width: 991px){

@@ -1,35 +1,46 @@
-const PRECIO_REMERA = 40;
-const PRECIO_PANTALON = 50;
-const PRECIO_CAMPERA = 65;
 const INTERES3 = 1.25;
 const INTERES12 = 1.45;
 const DESCUENTO = 0.80;
 
-const precioProducto = (p) => {
-    switch (p) {
+const calcularPrecio = (p, np) => p * np;
+
+const seguirDeCompras = (productoSeleccionado, producto) => {
+
+    producto = parseInt(prompt(`Que otro producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+
+    while (producto != 1 && producto != 2) {
+        producto = parseInt(prompt(`No es un producto válido. Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+    }
+
+    switch (producto) {
         case 1:
-            return PRECIO_REMERA;
+            productoSeleccionado = productoJabon;
             break;
         case 2:
-            return PRECIO_PANTALON;
-            break
-        case 3:
-            return PRECIO_CAMPERA;
-            break
+            productoSeleccionado = productoVela;
+            break;
         default:
-            return 0;
             break;
     }
-};
-
-const calcularPrecio = (p, np) => precioProducto(p) * np;
-
-const seguirDeCompras = () => {
-    producto = parseInt(prompt(`Que otro producto desea comprar? 1.Remera ${PRECIO_REMERA}, 2.Pantalon ${PRECIO_PANTALON}, 3.Campera ${PRECIO_CAMPERA}`));
 
     cantidad = parseInt(prompt(`Cuantos desea comprar?`));
 
-    return calcularPrecio(producto, cantidad);
+    let stockAux = productoSeleccionado.stockActual; 
+
+    // Chequeamos si hay stock
+    while (productoSeleccionado.compra(cantidad) < 0) {
+        
+        alert("Lamentablemente no nos queda esa cantidad :(");
+
+        if (productoSeleccionado.stockInicial == stockAux || productoSeleccionado.stockActual < 0) {
+            productoSeleccionado.recargarStock(stockAux);    
+        }
+        
+        cantidad = parseInt(prompt(`Cuantos desea comprar?`));
+
+    }
+
+    return calcularPrecio(productoSeleccionado.precio, cantidad);
 }
 
 const totalCuotas = (cuotas, precioAPagar) => precioAPagar * recargoDeCuotas(cuotas);
@@ -52,21 +63,67 @@ const calcularCuotas = (cuotas, precioAPagar) => totalCuotas(cuotas, precioAPaga
 
 const calcularDescuento = (precioAPagar) => precioAPagar * DESCUENTO;
 
+// --------- OBJETO -----------
+class Producto {
+    constructor(nombre, precio, stock){
+        this.nombre = nombre;
+        this.precio = parseInt(precio);
+        this.stockInicial = parseInt(stock);
+        this.stockActual = this.stockInicial;
+    }
+    recargarStock(stock){
+        this.stockActual = stock;
+    }
+    compra(cantidad){
+        this.stockActual = this.stockActual - cantidad;
+        return this.stockActual;
+    }
+}
+
 // --------- CODIGO -----------
 
-let seguirComprando = "si";
+// Creamos los objetos
+const productoJabon = new Producto("Jabones", 40, 5);
+const productoVela = new Producto("Velas", 70, 7);
 
-let producto = parseInt(prompt(`Que producto desea comprar? 1.Remera ${PRECIO_REMERA}, 2.Pantalon ${PRECIO_PANTALON}, 3.Campera ${PRECIO_CAMPERA}`));
+// Preguntamos por el producto
+let producto = parseInt(prompt(`Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+
+while (producto != 1 && producto != 2) {
+    producto = parseInt(prompt(`No es un producto válido. Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+}
+
+let productoSeleccionado;
+
+switch (producto) {
+    case 1:
+        productoSeleccionado = productoJabon;
+        break;
+    case 2:
+        productoSeleccionado = productoVela;
+        break;
+    default:
+        break;
+}
 
 let cantidad = parseInt(prompt(`Cuantos desea comprar?`));
 
-let precioTotal = calcularPrecio(producto, cantidad);
+// Chequeamos si hay stock
+while (productoSeleccionado.compra(cantidad) < 0) {
+    
+    alert("Lamentablemente no nos queda esa cantidad :(");
+    productoSeleccionado.recargarStock(productoSeleccionado.stockInicial);
+    cantidad = parseInt(prompt(`Cuantos desea comprar?`));
+
+}
+
+let precioTotal = calcularPrecio(productoSeleccionado.precio, cantidad);
 
 // Seguir si o no
-seguirComprando = prompt("Desea seguir comprando? si/no");
+let seguirComprando = prompt("Desea seguir comprando? si/no");
 while (seguirComprando == "si") {
 
-    precioTotal = precioTotal + seguirDeCompras();
+    precioTotal = precioTotal + seguirDeCompras(productoSeleccionado, producto);
     seguirComprando = prompt("Desea seguir comprando? si/no");
 
 }
@@ -85,8 +142,7 @@ if (medioDePago == "cuotas") {
     }
 
     // Recargo de cuotas depende la cantidad
-    alert(`El precio total: ${totalCuotas(cantidadDeCuotas, precioTotal)} quedaria en cómodas ${cantidadDeCuotas} cuotas de: 
-    ${calcularCuotas(cantidadDeCuotas, precioTotal)}.`);
+    alert(`El precio total: ${totalCuotas(cantidadDeCuotas, precioTotal)} quedaria en cómodas ${cantidadDeCuotas} cuotas de: $${calcularCuotas(cantidadDeCuotas, precioTotal).toFixed(2)}.`);
 
     precioTotal = totalCuotas(cantidadDeCuotas, precioTotal);
 }
