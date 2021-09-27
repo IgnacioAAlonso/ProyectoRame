@@ -6,24 +6,42 @@ const calcularPrecio = (p, np) => p * np;
 
 const seguirDeCompras = (productoSeleccionado, producto) => {
 
-    producto = parseInt(prompt(`Que otro producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+    producto = parseInt(prompt(`Que otro producto desea comprar? 1.Jabones, 2.Velas, 3.Ver Todo`));
 
-    while (producto != 1 && producto != 2) {
-        producto = parseInt(prompt(`No es un producto válido. Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+    while (producto != 1 && producto != 2 && producto != 3) {
+        producto = parseInt(prompt(`No es un producto válido. Que otro producto desea comprar? 1.Jabones, 2.Velas, 3.Ver Todo`));
     }
 
     switch (producto) {
         case 1:
-            productoSeleccionado = productoJabon;
+            productoSeleccionado = arrayProducto.filter(product => product.nombre.includes("Jabones"));
             break;
         case 2:
-            productoSeleccionado = productoVela;
+            productoSeleccionado = arrayProducto.filter(product => product.nombre.includes("Velas"));
+            break;
+        case 3:
+            productoSeleccionado = arrayProducto;
             break;
         default:
             break;
     }
 
-    cantidad = parseInt(prompt(`Cuantos desea comprar?`));
+    // Preguntamos por el producto que quiere comprar
+    productoText = "";
+    for (let i = 0; i < productoSeleccionado.length; i++) {
+        productoText = (productoText + " " +  (i+1) + ". " + productoSeleccionado[i].nombre + " $" + productoSeleccionado[i].precio + ("\n"));
+    }
+
+    producto = parseInt(prompt(productoText));
+
+    while (producto > productoSeleccionado.length || producto <= 0) {
+        producto = parseInt(prompt(`No es un producto válido. ${productoText}`));
+    }
+
+    // SELECCIONAMOS EL PRODUCTO
+    productoSeleccionado = productoSeleccionado[producto - 1];
+
+    let cantidad = parseInt(prompt(`Cuantos desea comprar? Stock: ${productoSeleccionado.stockActual}`));
 
     let stockAux = productoSeleccionado.stockActual; 
 
@@ -82,38 +100,60 @@ class Producto {
 
 // --------- CODIGO -----------
 
-// Creamos los objetos
-const productoJabon = new Producto("Jabones", 40, 5);
-const productoVela = new Producto("Velas", 70, 7);
+// Creamos el array de objetos
+const arrayProducto = [];
 
-// Preguntamos por el producto
-let producto = parseInt(prompt(`Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+arrayProducto.push(new Producto("Jabones Cuerpo", 60, 10));
+arrayProducto.push(new Producto("Jabones Mano", 40, 6));
+arrayProducto.push(new Producto("Velas Aroma", 80, 7));
+arrayProducto.push(new Producto("Velas Decorativas", 30, 7));
 
-while (producto != 1 && producto != 2) {
-    producto = parseInt(prompt(`No es un producto válido. Que producto desea comprar? 1.${productoJabon.nombre} $${productoJabon.precio}, 2.${productoVela.nombre} $${productoVela.precio}`));
+// Preguntamos por el producto que quiere ver
+let producto = parseInt(prompt(`Que desea ver? 1.Jabones, 2.Velas, 3.Ver Todo`));
+
+while (producto != 1 && producto != 2 && producto != 3) {
+    producto = parseInt(prompt(`No es un producto válido. Que desea ver? 1.Jabones, 2.Velas, 3.Ver Todo`));
 }
 
-let productoSeleccionado;
+let productoSeleccionado = [];
 
 switch (producto) {
     case 1:
-        productoSeleccionado = productoJabon;
+        productoSeleccionado = arrayProducto.filter(product => product.nombre.includes("Jabones"));
         break;
     case 2:
-        productoSeleccionado = productoVela;
+        productoSeleccionado = arrayProducto.filter(product => product.nombre.includes("Velas"));
+        break;
+    case 3:
+        productoSeleccionado = arrayProducto;
         break;
     default:
         break;
 }
 
-let cantidad = parseInt(prompt(`Cuantos desea comprar?`));
+// Preguntamos por el producto que quiere comprar
+let productoText = "";
+for (let i = 0; i < productoSeleccionado.length; i++) {
+    productoText = (productoText + " " +  (i+1) + ". " + productoSeleccionado[i].nombre + " $" + productoSeleccionado[i].precio + ("\n"));
+}
+
+producto = parseInt(prompt(productoText));
+
+while (producto > productoSeleccionado.length || producto <= 0) {
+    producto = parseInt(prompt(`No es un producto válido. ${productoText}`));
+}
+
+// SELECCIONAMOS EL PRODUCTO
+productoSeleccionado = productoSeleccionado[producto - 1];
+
+let cantidad = parseInt(prompt(`Cuantos desea comprar? Stock: ${productoSeleccionado.stockActual}`));
 
 // Chequeamos si hay stock
 while (productoSeleccionado.compra(cantidad) < 0) {
     
     alert("Lamentablemente no nos queda esa cantidad :(");
     productoSeleccionado.recargarStock(productoSeleccionado.stockInicial);
-    cantidad = parseInt(prompt(`Cuantos desea comprar?`));
+    cantidad = parseInt(prompt(`Cuantos desea comprar? Stock: ${productoSeleccionado.stockActual}`));
 
 }
 
