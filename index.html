@@ -1,123 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!-- <link rel="shortcut icon" 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- <link rel="shortcut icon" 
     href="./imagenes/Logo/vidrio-de-vino-rojo-ilustración-del-vector-del-estilo-del-bosquejo-aislado-sobre-fondo-blanco-dibujo.png"> -->
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Inicio | Ramé</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Inicio | Ramé</title>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light menuBar" style="background-color: #faf7f2;">
-            <div class="container-fluid d-flex justify-content-lg-around">
-              <a class="navbar-brand" href="#">
-                <img src="./Captura de pantalla 2021-09-15 182427.png" alt="" width="200" height="200">
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="bordes2">
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Tienda</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Para el cuerpo</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Para el hogar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a> <!-- PRUEBA COMMIT -->
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light menuBar" style="background-color: #faf7f2;">
+      <div class="container-fluid d-flex justify-content-lg-around">
+        <a class="navbar-brand" href="#">
+          <img src="./Captura de pantalla 2021-09-15 182427.png" alt="" width="200" height="200">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="bordes2">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tienda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Para el cuerpo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Para el hogar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a> <!-- PRUEBA COMMIT -->
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
     </div>
 
-    </header>
-    
-    <nav class="navbar sticky-top navbar-light bg-transparent d-flex justify-content-end">
-        <div class="container-fluid navMenu d-flex justify-content-center align-items-end">
-            <div class="d-flex row justify-content-center" >
-                <a class="navbar-brand col-6 textCenter" href="#">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a class="navbar-brand col-6 textCenter" href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="navbar-brand col-6 textCenter" href="#">
-                  <i class="fab fa-pinterest"></i>
-                </a>
-            </div>
-        </div>
-      </nav>
-    
-    <main>
+  </header>
 
-      <section>
-        <div class="portada">
-          <div class="portada__contenedorImagen">
-            <img class="portada__contenedorImagen-imagen" src="./imagenes/inicio/flores-petalos-hojas-jabones.png" alt="Imagen de la portada, contiene flores y jabones">
+  <nav class="navbar sticky-top navbar-light bg-transparent d-flex justify-content-end">
+    <div class="container-fluid navMenu d-flex justify-content-center align-items-end">
+      <div class="d-flex row justify-content-center">
+        <a class="navbar-brand col-6 textCenter" href="#canasta">
+          <div class="carritoContenedor">
+            <i class="carritoContenedor_icono icon fas fa-shopping-cart"></i>
+            <p class="cantidadCarrito" id="cantidadEnElCarrito"></p>
+          </div>
+        </a>
+        <a class="navbar-brand col-6 textCenter" href="#">
+          <i class="icon fab fa-instagram"></i>
+        </a>
+        <a class="navbar-brand col-6 textCenter" href="#">
+          <i class="icon fab fa-facebook-f"></i>
+        </a>
+        <a class="navbar-brand col-6 textCenter" href="#">
+          <i class="icon fab fa-pinterest"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section>
+      <div class="portada">
+        <div class="portada__contenedorImagen">
+          <img class="portada__contenedorImagen-imagen" src="./imagenes/inicio/flores-petalos-hojas-jabones.png"
+            alt="Imagen de la portada, contiene flores y jabones">
+        </div>
+
+        <div class="portada__contenedorTitulo">
+          <div class="portada__contenedorTitulo-box">
+            <h2 class="portada__contenedorTitulo-subtitulo">inspirados en la naturaleza</h2>
+            <h1 class="portada__contenedorTitulo-titulo">Jabones y Velas Artesanales</h1>
           </div>
 
-          <div class="portada__contenedorTitulo">
-            <div class="portada__contenedorTitulo-box">
-              <h2 class="portada__contenedorTitulo-subtitulo">inspirados en la naturaleza</h2>
-              <h1 class="portada__contenedorTitulo-titulo">Jabones y Velas Artesanales</h1>
-            </div>
-            
-            <div class="boxDesafio-contenedor">
-              <a class="boxDesafio" href="./desafioentregable.html">Desafio Entregable</a>
-              <a class="boxDesafio" href="./desafiocomplementario.html">Desafio Complementario</a>
-            </div>
-          </div>
-          
+          <!-- <div class="boxDesafio-contenedor">
+            <a class="boxDesafio" href="./desafioentregable.html">Desafio Entregable</a>
+            <a class="boxDesafio" href="./desafiocomplementario.html">Desafio Complementario</a>
+          </div> -->
         </div>
-      </section>
 
-        <section>
-            <h2 class="favoritos__subtitulo">Los Favoritos</h2>
-            
-            <div class="container__favoritos">
-              <div class="row justify-content-center container__favoritos-box">
-                <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
-                  <h2>JABONES CON PROBIÓTICO</h2>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit harum porro eligendi ipsa fugiat? </p>
-                  <a href=""></a>
-                </div>
-                <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
-                  <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Imagen de los jabones mas favoritos">
-                </div>
-              </div>
+      </div>
+    </section>
 
-              <div class="row justify-content-center container__favoritos-box">
-                <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
-                  <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Imagen de los jabones mas favoritos">
-                </div>
+    <section>
+      <h2 class="favoritos__subtitulo">Los Favoritos</h2>
 
-                <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
-                  <h2>VELAS CON AROMAS DE LA NATURALEZA</h2>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit harum porro eligendi ipsa fugiat? </p>
-                  <a href=""></a>
-                </div>
-              </div>
-            </div>
-        </section>
-    </main>
+      <div class="container__favoritos">
+        <div class="row justify-content-center container__favoritos-box">
+          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
+            <h2>JABONES CON PROBIÓTICO</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
+              harum porro eligendi ipsa fugiat? </p>
+            <a href=""></a>
+          </div>
+          <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
+            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
+              alt="Imagen de los jabones mas favoritos">
+          </div>
+        </div>
 
-    <footer></footer>
+        <div class="row justify-content-center container__favoritos-box">
+          <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
+            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
+              alt="Imagen de los jabones mas favoritos">
+          </div>
 
-    <script src="./js/bootstrap.js"></script>
-    <script src="https://kit.fontawesome.com/af1d59bc16.js" crossorigin="anonymous"></script>
+          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
+            <h2>VELAS CON AROMAS DE LA NATURALEZA</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
+              harum porro eligendi ipsa fugiat? </p>
+            <a href=""></a>
+          </div>
+        </div>
+
+        <div class="row justify-content-center container__favoritos-box">
+          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
+            <h2>JABONES CON PROBIÓTICO</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
+              harum porro eligendi ipsa fugiat? </p>
+            <a href=""></a>
+          </div>
+          <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
+            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
+              alt="Imagen de los jabones mas favoritos">
+          </div>
+        </div>
+
+        <div class="row justify-content-center container__favoritos-box">
+          <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
+            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
+              alt="Imagen de los jabones mas favoritos">
+          </div>
+
+          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
+            <h2>VELAS CON AROMAS DE LA NATURALEZA</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
+              harum porro eligendi ipsa fugiat? </p>
+            <a href=""></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="canasta" name="canasta">
+        <h2>Carrito de Compras</h2>
+      </div>
+
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="./js/bootstrap.js"></script>
+  <script src="./js/desafio4.js"></script>
+  <script src="https://kit.fontawesome.com/af1d59bc16.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -111,6 +111,32 @@ main{
     object-position: 50% 50%;
 }
 
+.carritoContenedor{
+    display: flex;
+    position: relative;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+.icon{
+    font-size: 25px;
+}
+
+.carritoContenedor_icono{
+    align-self: center;
+}
+
+.cantidadCarrito{
+    position: absolute;
+    width: auto;
+    height: auto;
+    border: solid black;
+    border-radius: 20px;
+    background-color: #faf7f2;
+    font-size: 15px;
+    padding: 5px;
+}
+
 @media only screen and (max-width: 991px){
     .menuBar{
         width: 100%;
