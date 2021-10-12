@@ -39,7 +39,7 @@
                 <a class="nav-link" href="#">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a> <!-- PRUEBA COMMIT -->
+                <a class="nav-link" href="#">Contacto</a>
               </li>
             </ul>
           </div>
@@ -52,7 +52,7 @@
   <nav class="navbar sticky-top navbar-light bg-transparent d-flex justify-content-end">
     <div class="container-fluid navMenu d-flex justify-content-center align-items-end">
       <div class="d-flex row justify-content-center">
-        <a class="navbar-brand col-6 textCenter" href="#canasta">
+        <a class="navbar-brand col-6 textCenter" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" href="#canasta">
           <div class="carritoContenedor">
             <i class="carritoContenedor_icono icon fas fa-shopping-cart"></i>
             <p class="cantidadCarrito" id="cantidadEnElCarrito"></p>
@@ -86,10 +86,10 @@
             <h1 class="portada__contenedorTitulo-titulo">Jabones y Velas Artesanales</h1>
           </div>
 
-          <!-- <div class="boxDesafio-contenedor">
-            <a class="boxDesafio" href="./desafioentregable.html">Desafio Entregable</a>
+          <div class="boxDesafio-contenedor">
+            <!-- <a class="boxDesafio" href="./desafioentregable.html">Desafio Entregable</a> -->
             <a class="boxDesafio" href="./desafiocomplementario.html">Desafio Complementario</a>
-          </div> -->
+          </div>
         </div>
 
       </div>
@@ -98,64 +98,17 @@
     <section>
       <h2 class="favoritos__subtitulo">Los Favoritos</h2>
 
-      <div class="container__favoritos">
-        <div class="row justify-content-center container__favoritos-box">
-          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
-            <h2>JABONES CON PROBIÓTICO</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
-              harum porro eligendi ipsa fugiat? </p>
-            <a href=""></a>
-          </div>
-          <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
-            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
-              alt="Imagen de los jabones mas favoritos">
-          </div>
-        </div>
-
-        <div class="row justify-content-center container__favoritos-box">
-          <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
-            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
-              alt="Imagen de los jabones mas favoritos">
-          </div>
-
-          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
-            <h2>VELAS CON AROMAS DE LA NATURALEZA</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
-              harum porro eligendi ipsa fugiat? </p>
-            <a href=""></a>
-          </div>
-        </div>
-
-        <div class="row justify-content-center container__favoritos-box">
-          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
-            <h2>JABONES CON PROBIÓTICO</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
-              harum porro eligendi ipsa fugiat? </p>
-            <a href=""></a>
-          </div>
-          <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
-            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
-              alt="Imagen de los jabones mas favoritos">
-          </div>
-        </div>
-
-        <div class="row justify-content-center container__favoritos-box">
-          <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
-            <img class="container__jabonesImagen-img" src="./imagenes/jabones/jabones-favoritos.jpg"
-              alt="Imagen de los jabones mas favoritos">
-          </div>
-
-          <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
-            <h2>VELAS CON AROMAS DE LA NATURALEZA</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel odit quod mollitia repellat impedit
-              harum porro eligendi ipsa fugiat? </p>
-            <a href=""></a>
-          </div>
-        </div>
+      <div class="container__favoritos" id="listado">
       </div>
 
-      <div id="canasta" name="canasta">
-        <h2>Carrito de Compras</h2>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Canasta</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div id="canasta"></div>
+        </div>
       </div>
 
     </section>
@@ -164,7 +117,7 @@
   <footer></footer>
 
   <script src="./js/bootstrap.js"></script>
-  <script src="./js/desafio4.js"></script>
+  <script src="./js/ecommerce.js"></script>
   <script src="https://kit.fontawesome.com/af1d59bc16.js" crossorigin="anonymous"></script>
 </body>
 
