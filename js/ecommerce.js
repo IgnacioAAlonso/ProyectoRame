@@ -86,9 +86,12 @@ const eliminarProducto = (producto) => {
   */
   const insertarCanasta = (producto) => {
 
-    elementoCarrito.agregarAlCarrito();
-    console.log(producto.nombre, producto.cantidad);
+    elementoCarrito.agregarAlCarrito();    
+    console.log(arrayCanasta);
 
+    /* Pregunto si la cantidad es 0 para saber si es el primer elemento
+       (1)De ser el primero creo el producto en la canasta
+       (2)Si ya existe en la canasta, solamente aumento la cantidad */
     if (producto.cantidad <= 0) {
         producto.cantidad++;
 
@@ -102,7 +105,6 @@ const eliminarProducto = (producto) => {
         </div>`
     
         /* 
-        OTRO EJEMPLO DE USO DEL ONCLICK
         Inserto un elemento botón al elemento recientemente creado
         que contenga la función para poder eliminar el prodcuto de la canasta
         */
@@ -115,22 +117,29 @@ const eliminarProducto = (producto) => {
         contenedorCanasta.appendChild(contenedor);
         arrayCanasta.push(producto);
         localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
-        //localStorage.setItem("carrito", JSON.stringify(canasta));
         
     } else {
         producto.cantidad++;
         let cantidadProducto = document.getElementById(`cantidad-${producto.id}`);
         cantidadProducto.innerHTML = ` ${producto.nombre} x ${producto.cantidad}`;
+
+        /* Retiro el producto y vuelvo a colocarlo con la nueva cantidad
+          Ya que fue la forma que pude encontrar para actualizar la cantidad en en localStorage
+          Sin agregarlo nuevamente */
         const indexCanasta = arrayCanasta.indexOf(producto);
         arrayCanasta.splice(indexCanasta, 1);
         arrayCanasta.push(producto);
         localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
     }
-    
+
   }
 
+  /* 
+  Con esta función puedo agregar lo productos del localStorage a la canasta 
+  */
   const insertarCanastaLocalStorage = (producto) => {
 
+    /* Por la cantidad que tiene el producto, hago la llamda al agregar al carrito */
     for (let index = 0; index < producto.cantidad; index++) {
         elementoCarrito.agregarAlCarrito();
     }
@@ -146,23 +155,21 @@ const eliminarProducto = (producto) => {
         </div>`
     
         /* 
-        OTRO EJEMPLO DE USO DEL ONCLICK
         Inserto un elemento botón al elemento recientemente creado
         que contenga la función para poder eliminar el prodcuto de la canasta
         */
-    let boton = document.createElement("button");
-    boton.className = "boton-eliminar";
-    boton.innerHTML = "Eliminar";
-    boton.onclick = () => eliminarProducto(producto);
-    contenedor.appendChild(boton);
+        let boton = document.createElement("button");
+        boton.className = "boton-eliminar";
+        boton.innerHTML = "Eliminar";
+        boton.onclick = () => eliminarProducto(producto);
+        contenedor.appendChild(boton);
     
-    contenedorCanasta.appendChild(contenedor);
-    arrayCanasta.push(producto);
-    localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
+        contenedorCanasta.appendChild(contenedor);
+        arrayCanasta.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
   }
   
   /* 
-    EJEMPLO DE USO DEL ONCLICK
     Función para crear productos dinámicamente y crearlos en el contenedor 
   */
   const insertarProductos = () => {
@@ -170,6 +177,8 @@ const eliminarProducto = (producto) => {
       let contenidoProducto = document.createElement("div");
       contenidoProducto.className = "row justify-content-center container__favoritos-box";
       contenidoProducto.id = producto.id;
+
+      /* Pregunto si son positivos o negativos, ya que quiero ir variando como se muestran en el html */
 
     if (producto.id % 2 == 1) {
         contenidoProducto.innerHTML = `
@@ -207,6 +216,8 @@ const eliminarProducto = (producto) => {
     }
   }
 
+  /* Inicializo la cantidad de los productos a los del localStorage
+    Y los inserto en la canasta */
   const inicializarProductos = (productoLocal) => {
     for (const producto of productos){
         if (producto.id == productoLocal.id) {
@@ -216,6 +227,7 @@ const eliminarProducto = (producto) => {
     }
   }
 
+  /* Agrego el método comprar para el boton de los productos */
   const comprar = () => {
     for (const producto of productos){
         let boton = document.getElementById(`boton-${producto.id}`);     
@@ -234,6 +246,7 @@ const eliminarProducto = (producto) => {
   insertarProductos();
   comprar();
 
+  /* Pregunto por el localStorage y de existir lo inserto en la canasta */
   if (carritoLocalStorage) {
     carritoParse = JSON.parse(carritoLocalStorage);
 
