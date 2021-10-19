@@ -47,6 +47,7 @@ class Carrito {
     }
 }
 
+jQuery(() => {
 // -------- CONSTANTES ELEMENTOS DEL DOM
 const listadoProductos = document.getElementById("listado");
 const precioElementos = document.getElementsByClassName("precio");
@@ -62,7 +63,8 @@ const carritoLocalStorage = localStorage.getItem("carrito");
 const eliminarProducto = (producto) => {
     elementoCarrito.quitarDelCarrito(producto.cantidad);
     producto.cantidad = 0;
-    carritoHTML.innerHTML = elementoCarrito.cantidad;
+    carritoHTML.html(`${elementoCarrito.cantidad}`);
+    totalCarrito();
 
     for (const productoCanasta of contenedorCanasta.children) {
       if (parseInt(productoCanasta.id) === parseInt(producto.id)) {
@@ -86,10 +88,10 @@ const eliminarProducto = (producto) => {
         elementoCarrito.quitarDelCarrito(1);
         producto.cantidad--;
 
-        let cantidadProducto = document.getElementById(`cantidad-${producto.id}`);
-        cantidadProducto.innerHTML = `${producto.cantidad}`;
-        let totalProducto = document.getElementById(`total-${producto.id}`);
-        totalProducto.innerHTML = `$ ${precioTotal(producto.precio, producto.cantidad)}`;
+        let cantidadProducto = $(`#cantidad-${producto.id}`); //document.getElementById(`cantidad-${producto.id}`);
+        cantidadProducto.html(`${producto.cantidad}`);
+        let totalProducto = $(`#total-${producto.id}`);// document.getElementById(`total-${producto.id}`);
+        totalProducto.html(`$ ${precioTotal(producto.precio, producto.cantidad)}`);
 
         /* Retiro el producto y vuelvo a colocarlo con la nueva cantidad
           Ya que fue la forma que pude encontrar para actualizar la cantidad en en localStorage
@@ -111,56 +113,60 @@ const eliminarProducto = (producto) => {
   const insertarCanasta = (producto) => {
 
     elementoCarrito.agregarAlCarrito();    
-    console.log(arrayCanasta);
-
+   
     /* Pregunto si la cantidad es 0 para saber si es el primer elemento
        (1)De ser el primero creo el producto en la canasta
        (2)Si ya existe en la canasta, solamente aumento la cantidad */
     if (producto.cantidad <= 0) {
         producto.cantidad++;
 
-        let contenedor = document.createElement("div");
-        contenedor.className = "producto-canasta";
-        contenedor.id = producto.id;
-        contenedor.innerHTML = `
-        <img src="${producto.imagen}">
+        $('#canasta').append(`
+    <div class="producto-canasta" id="${producto.id}">
+    <img src="${producto.imagen}">
               <div class="contenedor__general-producto">
+              
               <div class="contenedor__producto">
+
                 <div class="descripcion-producto">
-                  <p class="producto-canastaDescripcion"">${producto.nombre}</p>
+                  <p class="producto-canastaDescripcion">${producto.nombre}</p>
                   <p> $ ${producto.precio} </p>
                 </div>
+
                 <div class="contenedor__cantidad">
                   <a id="cantidadMenos-${producto.id}"> <i class="contenedor__cantidad-icon contenedor__cantidad-icon--red fas fa-minus-square"></i> </a>
                   <p  class="contenedor__cantidad-numero" id="cantidad-${producto.id}"> ${producto.cantidad} </p>
                   <a id="cantidadMas-${producto.id}"> <i class="contenedor__cantidad-icon contenedor__cantidad-icon--green fas fa-plus-square"></i> </a>
                 </div>
+
               </div>
+
               <div class="contenedor__eliminar">
                 <b class="contenedor__eliminarCantidad" id="total-${producto.id}">$ ${precioTotal(producto.precio, producto.cantidad)}</b>
                 <a id="eliminar-${producto.id}" ><i class="contenedor__eliminarProducto far fa-trash-alt"></i></a>
               </div>
+
               </div>
-          `
-    
+    </div>`);
+
         /*
         Inserto un elemento botón al elemento recientemente creado
         que contenga la función para poder eliminar el prodcuto de la canasta
         */
     
-        contenedorCanasta.appendChild(contenedor);
+        
         eliminar(producto);
         sumarAlCarrito(producto);
         restarAlCarrito(producto);
         arrayCanasta.push(producto);
         localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
+        totalCarrito();
         
     } else {
         producto.cantidad++;
-        let cantidadProducto = document.getElementById(`cantidad-${producto.id}`);
-        cantidadProducto.innerHTML = `${producto.cantidad}`;
-        let totalProducto = document.getElementById(`total-${producto.id}`);
-        totalProducto.innerHTML = `$ ${precioTotal(producto.precio, producto.cantidad)}`;
+        let cantidadProducto = $(`#cantidad-${producto.id}`);//document.getElementById(`cantidad-${producto.id}`);
+        cantidadProducto.html(`${producto.cantidad}`);
+        let totalProducto = $(`#total-${producto.id}`);
+        totalProducto.html(`$ ${precioTotal(producto.precio, producto.cantidad)}`);
 
         /* Retiro el producto y vuelvo a colocarlo con la nueva cantidad
           Ya que fue la forma que pude encontrar para actualizar la cantidad en en localStorage
@@ -169,6 +175,7 @@ const eliminarProducto = (producto) => {
         arrayCanasta.splice(indexCanasta, 1);
         arrayCanasta.push(producto);
         localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
+        totalCarrito();
     }
 
   }
@@ -183,15 +190,15 @@ const eliminarProducto = (producto) => {
         elementoCarrito.agregarAlCarrito();
     }
 
-    carritoHTML.innerHTML = elementoCarrito.cantidad;
-    let contenedor = document.createElement("div");
-    contenedor.className = "producto-canasta";
-    contenedor.id = producto.id;
-    contenedor.innerHTML = `<img src="${producto.imagen}">
+    carritoHTML.html(`${elementoCarrito.cantidad}`);
+
+      $('#canasta').append(`
+    <div class="producto-canasta" id="${producto.id}">
+    <img src="${producto.imagen}">
     <div class="contenedor__general-producto">
     <div class="contenedor__producto">
       <div class="descripcion-producto">
-        <p class="producto-canastaDescripcion"">${producto.nombre}</p>
+        <p class="producto-canastaDescripcion">${producto.nombre}</p>
         <p> $ ${producto.precio} </p>
       </div>
       <div class="contenedor__cantidad">
@@ -204,19 +211,20 @@ const eliminarProducto = (producto) => {
       <b class="contenedor__eliminarCantidad" id="total-${producto.id}">$ ${precioTotal(producto.precio, producto.cantidad)}</b>
       <a id="eliminar-${producto.id}" ><i class="contenedor__eliminarProducto far fa-trash-alt"></i></a>
     </div>
-    </div>`
-    
+    </div>
+    </div>`);
+
         /* 
         Inserto un elemento botón al elemento recientemente creado
         que contenga la función para poder eliminar el prodcuto de la canasta
         */
-    
-        contenedorCanasta.appendChild(contenedor);
+
         eliminar(producto);
         sumarAlCarrito(producto);
         restarAlCarrito(producto);
         arrayCanasta.push(producto);
         localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
+        totalCarrito();
   }
   
   /* 
@@ -224,29 +232,33 @@ const eliminarProducto = (producto) => {
   */
   const insertarProductos = () => {
     for (const producto of productos) {
-      let contenidoProducto = document.createElement("div");
-      contenidoProducto.className = "row justify-content-center container__favoritos-box";
-      contenidoProducto.id = producto.id;
+     // let contenidoProducto = document.createElement("div");
+      //contenidoProducto.className = "row justify-content-center container__favoritos-box";
+      //contenidoProducto.id = producto.id;
 
       /* Pregunto si son positivos o negativos, ya que quiero ir variando como se muestran en el html */
 
     if (producto.id % 2 == 1) {
-        contenidoProducto.innerHTML = `
-        <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
-            <div class="contenedorCartas">
-                <h2 class="contenedorCartas__titulo">${producto.nombre}</h2>
-                <p class="contenedorCartas__texto"> ${producto.descripcion} </p>
-                <p class="contenedorCartas__precio">$${producto.precio}</p>
-                <button class="contenedorCartas__enlace" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="boton-${producto.id}">Comprar</button>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
-            <img class="container__jabonesImagen-img" src="${producto.imagen}"
-            alt="Imagen de los jabones mas favoritos">
-          </div>
-    </div>`;
+      $('#listado').append(`
+    <div class="row justify-content-center container__favoritos-box" id="${producto.id}">
+    <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
+    <div class="contenedorCartas">
+        <h2 class="contenedorCartas__titulo">${producto.nombre}</h2>
+        <p class="contenedorCartas__texto"> ${producto.descripcion} </p>
+        <p class="contenedorCartas__precio">$${producto.precio}</p>
+        <button class="contenedorCartas__enlace" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="boton-${producto.id}">Comprar</button>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
+    <img class="container__jabonesImagen-img" src="${producto.imagen}"
+    alt="Imagen de los jabones mas favoritos">
+  </div>
+</div>
+    </div>`);
     } else {
-        contenidoProducto.innerHTML = `
+
+      $('#listado').append(`
+      <div class="row justify-content-center container__favoritos-box" id="${producto.id}">
       <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
       <img class="container__jabonesImagen-img" src="${producto.imagen}"
         alt="Imagen de los jabones mas favoritos">
@@ -259,10 +271,12 @@ const eliminarProducto = (producto) => {
         <p class="contenedorCartas__precio">$${producto.precio}</p>
         <button class="contenedorCartas__enlace" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="boton-${producto.id}">Comprar</button>
       </div>
-    </div>`;    
+    </div>
+    </div>`);
+         
     }
 
-      listadoProductos.appendChild(contenidoProducto);
+      //listadoProductos.appendChild(contenidoProducto);
     }
   }
 
@@ -280,49 +294,63 @@ const eliminarProducto = (producto) => {
   /* Agrego el método comprar para el boton de los productos */
   const comprar = () => {
     for (const producto of productos){
-        let boton = document.getElementById(`boton-${producto.id}`);     
-        boton.onclick = () => {
-            insertarCanasta(producto);
-            carritoHTML.innerHTML = elementoCarrito.cantidad;
-        } 
+
+      $(`#boton-${producto.id}`).on("click", function () {
+        insertarCanasta(producto);
+        carritoHTML.html(`${elementoCarrito.cantidad}`);
+        totalCarrito();
+      });
             
     }
   }
 
   /* Agrego el método eliminar producto para el boton del tacho */
   const eliminar = (producto) => {
-        let boton = document.getElementById(`eliminar-${producto.id}`);     
-        boton.onclick = () => {
-            eliminarProducto(producto);
-        }
+    $(`#eliminar-${producto.id}`).on("click", function () {
+      eliminarProducto(producto);
+    });
   }
 
   /* Agrego el método eliminar producto para el boton del tacho */
   const sumarAlCarrito = (producto) => {
-    let boton = document.getElementById(`cantidadMas-${producto.id}`);     
-    boton.onclick = () => {
+
+    $(`#cantidadMas-${producto.id}`).on("click", function () {
       insertarCanasta(producto);
-      carritoHTML.innerHTML = elementoCarrito.cantidad;
-    }
+      carritoHTML.html(`${elementoCarrito.cantidad}`);
+      totalCarrito();
+    });
+    
   }
 
   /* Agrego el método eliminar producto para el boton del tacho */
   const restarAlCarrito = (producto) => {
-    let boton = document.getElementById(`cantidadMenos-${producto.id}`);     
-    boton.onclick = () => {
+    $(`#cantidadMenos-${producto.id}`).on("click", function () {
       restoProducto(producto);
-      carritoHTML.innerHTML = elementoCarrito.cantidad;
-    }
+      carritoHTML.html(`${elementoCarrito.cantidad}`);
+      totalCarrito();
+    });
   }
 
 
   /* Calculo el precio total del producto dependiendo de la cantidad */
   const precioTotal = (precio, cantidad) => { return precio * cantidad}
 
+  /* Calculo el precio de todos los productos de la canasta */
+  const totalCarrito = () => { 
+    sumaTotalCarrito = 0; 
+    for (const producto of productos) {
+      sumaTotalCarrito += precioTotal(producto.precio, producto.cantidad);
+    }
+
+    sumaTotalCarritoHTML.html(`$ ${sumaTotalCarrito}`);
+  }
+
 
   //CÓDIGO
-  let carritoHTML = document.getElementById("cantidadEnElCarrito");
+  let carritoHTML = $("#cantidadEnElCarrito"); 
   let carritoParse;
+  let sumaTotalCarrito = 0;
+  let sumaTotalCarritoHTML = $("#sumaTotalCarrito");
 
   insertarProductos();
   comprar();
@@ -335,3 +363,4 @@ const eliminarProducto = (producto) => {
         inicializarProductos(producto);
     }
   }
+});
