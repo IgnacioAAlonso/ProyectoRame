@@ -1,0 +1,154 @@
+$colorBack: #fff;
+$colorDetail: #d0b78d;
+$colorText: #000;
+
+@mixin tituloBefore() {
+    content: '';
+    position: absolute;
+        bottom: -5px;
+        left: 0;
+    width: 50px;
+    height: 2px;
+    background: $colorDetail;
+}
+
+@mixin justifyBetween() {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@mixin justifyCenter() {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-wrap: wrap;
+}
+
+.contenedorGrid__footer{
+    position: relative;
+    width: 75%;
+    height: auto;
+    padding: 50px 100px;
+    /* padding: 0px; */
+    background: $colorBack;
+    justify-self: center;
+    align-self: center;
+    @include justifyCenter();
+    .contenedorGrid__body{
+        @include justifyBetween();
+        flex-direction: row;
+        .contenedorGrid__columInfo-footer{
+            width: 40%;
+            .contenedorGrid__titulo-columInfo{
+                position: relative;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+            .contenedorGrid__titulo-columInfo::before{
+                @include tituloBefore();
+            }
+            .contenedorGrid__texto-columInfo{
+                color: $colorText;
+            }
+
+            .contenedorGrid__redes{
+                margin-top: 20px;
+                margin-left: -32px;
+                display: flex;
+                .contenedorGrid__redes-list{
+                    list-style: none;
+                    .contenedorGrid__redes-enlace{
+                       display: inline-block;
+                        width: 40px;
+                        height: 40px;
+                        background: #222;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        .fab{
+                            color: #fff;
+                            font-size: 20px;
+                        }
+                    }
+                    .contenedorGrid__redes-enlace:hover{
+                        background: $colorDetail;
+                     }
+                }
+            }
+        }
+        .contenedorGrid__columLinks-footer{
+            position: relative;
+            width: 25%;
+            .contenedorGrid__titulo-columLinks{
+                position: relative;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+            .contenedorGrid__titulo-columLinks::before{
+                @include tituloBefore();
+            }
+            .contenedorGrid__links{
+                margin-left: -32px;
+                .contenedorGrid__links-list{
+                    list-style: none;
+                    .contenedorGrid__links-enlace{
+                        color: $colorText;
+                        text-decoration: none;
+                        margin-bottom: 10px;
+                        display: inline-block;
+                    }
+                    .contenedorGrid__links-enlace:hover{
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .contenedorGrid__columContacto-footer{
+            width: calc(35% - 60px);
+            margin-right: 0 !important;
+            .contenedorGrid__titulo-columContacto{
+                position: relative;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+            .contenedorGrid__titulo-columContacto::before{
+                @include tituloBefore();
+            }
+            .contenedorGrid__contacto{
+                position: relative;
+                .contenedorGrid__contacto-list{
+                    display: flex;
+                    margin-bottom: 16px;
+                    margin-left: -32px;
+                    .contenedorGrid__contacto-spanIcon{
+                        color: #000;
+                        font-size: 20px;
+                        margin-right: 10px;
+                    }
+                    .contenedorGrid__contacto-span{
+                        color: $colorText;
+                    }
+                    .contenedorGrid__contacto-info{
+                        .contenedorGrid__contacto-enlace{
+                            color: $colorText;
+                            text-decoration: none;
+                        }
+                        .contenedorGrid__contacto-enlace:hover{
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+        .contenedorGrid__body--margin{
+            margin-right: 30px;
+        }
+    }
+}
