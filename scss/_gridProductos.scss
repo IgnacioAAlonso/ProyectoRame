@@ -28,6 +28,8 @@ main{
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                transition: all 1.5s ease-in;
+                opacity: 0;
                 .contenedorGrid__catalogoVinos-imgBox{
                     position: relative;
                     width: 200px;
@@ -46,4 +48,18 @@ main{
             }
         }
     }
+}
+
+.mostrarDerecha{
+    animation: mostrarDerecha 2s;
+}
+
+@keyframes mostrarDerecha{
+    0%{ 
+        transform: translateX(-60px);
+        
+    }
+
+    100%{ transform: translateX(0px);
+        opacity: 1;}
 }

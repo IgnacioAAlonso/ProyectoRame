@@ -364,12 +364,4 @@ const eliminarProducto = (producto) => {
     }
   }
 
-  $(document).ready(function (){
-    $("#imagen_portada")
-    .animate({left:0, opacity: 1},1500);
-
-    $("#contenedor_portada")
-    .animate({right:0, opacity: 1},1500);
-  });
-
 });

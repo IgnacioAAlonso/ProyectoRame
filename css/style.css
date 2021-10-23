@@ -144,7 +144,9 @@ main .sectionGaleriaDeFotos {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      transition: all 1.5s ease-in;
+      opacity: 0; }
       main .sectionGaleriaDeFotos .sectionGaleriaDeFotos__catalogoProductos .contenedorGrid__catalogoVinos-card .contenedorGrid__catalogoVinos-imgBox {
         position: relative;
         width: 200px;
@@ -158,6 +160,16 @@ main .sectionGaleriaDeFotos {
           width: 100%;
           height: 100%;
           object-fit: cover; }
+
+.mostrarDerecha {
+  animation: mostrarDerecha 2s; }
+
+@keyframes mostrarDerecha {
+  0% {
+    transform: translateX(-60px); }
+  100% {
+    transform: translateX(0px);
+    opacity: 1; } }
 
 body {
   display: flex;
@@ -197,7 +209,7 @@ body {
           width: 43%;
           opacity: 0;
           position: relative;
-          right: -700px;}
+          right: -700px; }
           body main .contenedor__portada .portada .portada__contenedorTitulo .portada__contenedorTitulo-box .portada__contenedorTitulo-titulo {
             font-weight: bold;
             font-size: large;
@@ -220,7 +232,8 @@ body {
       text-align: center;
       margin: 5% 0 5% 0; }
     body main .sectionFavoritos .container__favoritos .container__favoritos-box {
-      margin-bottom: 100px; }
+      margin-bottom: 100px;
+      opacity: 0; }
       body main .sectionFavoritos .container__favoritos .container__favoritos-box .container__favoritos-jabonesDescripcion .contenedorCartas {
         width: 100%;
         height: 100%;
@@ -323,35 +336,38 @@ body {
       width: 100%;
       height: 50px;
       background-color: #faecd5; }
-    body main .sectionInformacionNatural .sectionInformacionNatural__titulo {
-      font-weight: bold;
-      font-size: 15mm;
-      letter-spacing: 2.5mm;
-      word-spacing: 1.5mm;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 5% 0 2% 0; }
-    body main .sectionInformacionNatural .sectionInformacionNatural__descripcion {
-      padding: 50px 100px;
-      padding-top: 0px; }
-    body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
-      body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box .sectionInformacionNatural__citaFrase-box {
-        color: gray;
-        font-style: oblique;
-        width: 80%;
-        margin-bottom: 0; }
-      body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box .sectionInformacionNatural__citaAutor-box {
+    body main .sectionInformacionNatural {
+      transition: all 0.5s;
+      opacity: 0; }
+      body main .sectionInformacionNatural .sectionInformacionNatural__titulo {
         font-weight: bold;
-        width: 80%;
-        text-align: end; }
-    body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__imagen-box .sectionInformacionNatural__imagen-img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      object-position: 50% 50%; }
+        font-size: 15mm;
+        letter-spacing: 2.5mm;
+        word-spacing: 1.5mm;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 5% 0 2% 0; }
+      body main .sectionInformacionNatural .sectionInformacionNatural__descripcion {
+        padding: 50px 100px;
+        padding-top: 0px; }
+      body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box .sectionInformacionNatural__citaFrase-box {
+          color: gray;
+          font-style: oblique;
+          width: 80%;
+          margin-bottom: 0; }
+        body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__cita-box .sectionInformacionNatural__citaAutor-box {
+          font-weight: bold;
+          width: 80%;
+          text-align: end; }
+      body main .sectionInformacionNatural .sectionInformacionNatural__box .sectionInformacionNatural__imagen-box .sectionInformacionNatural__imagen-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        object-position: 50% 50%; }
     body main .lineaDivisoria {
       border-top: 5px solid black;
       height: 15px;
@@ -359,7 +375,7 @@ body {
       padding: 0; }
   body .contenedorGrid__copyrightText {
     grid-area: copyright;
-    width: 80%;
+    width: 100%;
     background: #fcedd4;
     text-align: center;
     color: #000; }
@@ -411,6 +427,16 @@ body {
   height: 50vh;
   position: absolute;
   top: 0; }
+
+.mostrarArriba {
+  animation: mostrarArriba 1s; }
+
+@keyframes mostrarArriba {
+  0% {
+    transform: translateY(-60px); }
+  100% {
+    transform: translateY(0px);
+    opacity: 1; } }
 
 /* @media only screen and (max-width: 991px){
     .menuBar{

@@ -36,7 +36,6 @@ body{
                     align-items: center;
                     justify-content: center;
                     flex-direction: column;
-
                     .portada__contenedorTitulo-box{
                         text-align: left;
                         margin-left: 15%;
@@ -79,6 +78,7 @@ body{
             .container__favoritos{
                 .container__favoritos-box{
                     margin-bottom: 100px;
+                    opacity: 0;
                     .container__favoritos-jabonesDescripcion{
                         .contenedorCartas{
                             width: 100%;
@@ -228,6 +228,8 @@ body{
         }
 
         .sectionInformacionNatural{
+            transition: all 0.5s;
+            opacity: 0;
             .sectionInformacionNatural__titulo{
                 font-weight: bold;
                 font-size: 15mm;
@@ -278,9 +280,10 @@ body{
     }
     .contenedorGrid__copyrightText{
         grid-area: copyright;
-        width: 80%;
+        width: 100%;
         background: #fcedd4;
         text-align: center;
+        
         color: #000;
     }
 }
@@ -343,6 +346,19 @@ body{
         top: 0;
 }
 
+.mostrarArriba{
+    animation: mostrarArriba 1s;
+}
+
+@keyframes mostrarArriba{
+    0%{ 
+        transform: translateY(-60px);
+        
+    }
+
+    100%{ transform: translateY(0px);
+        opacity: 1;}
+}
 /* @media only screen and (max-width: 991px){
     .menuBar{
         width: 100%;
