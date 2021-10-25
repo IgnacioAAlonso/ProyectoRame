@@ -14,7 +14,7 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light menuBar" style="background-color: #faf7f2;">
+    <nav class="navbar navbar-expand-lg navbar-light menuBar" style="background-color: #faf7f2;" id="section_inicio">
       <div class="container-fluid d-flex justify-content-lg-around">
         <a class="navbar-brand" href="#">
           <img src="./Captura de pantalla 2021-09-15 182427.png" alt="" width="200" height="200">
@@ -27,19 +27,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Tienda</a>
+                <a class="nav-link nav_cursor" id="nav_jabones">Para el cuerpo</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Para el cuerpo</a>
+                <a class="nav-link nav_cursor" id="nav_velas">Para el hogar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Para el hogar</a>
+                <a class="nav-link nav_cursor" id="nav_nosotros">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Nosotros</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link nav_cursor" id="nav_contacto">Contacto</a>
               </li>
             </ul>
           </div>
@@ -96,7 +93,7 @@
     </section>
 
     <section class="sectionFavoritos">
-      <h2 class="favoritos__subtitulo">Los Favoritos</h2>
+      <h2 class="favoritos__subtitulo" id="section_jabones">Los Favoritos</h2>
 
       <div class="container__favoritos" id="listado">
       </div>
@@ -130,7 +127,7 @@
     </section>
 
     <section class="sectionInformacionNatural" id="section_informacion">
-      <h2 class="sectionInformacionNatural__titulo">100% Natural</h2>
+      <h2 class="sectionInformacionNatural__titulo" id="section_nosotros">100% Natural</h2>
 
       <p class="sectionInformacionNatural__descripcion">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
         Officia inventore amet cupiditate dolore blanditiis laborum suscipit quia nulla dignissimos! 
@@ -158,51 +155,54 @@
     <section class="sectionGaleriaDeFotos">
       <h2 class="sectionInformacionNatural__titulo">#Ramé</h2>
 
-      <div class="col-md-8 col-sm-12 col-12 mb-3 mt-3 sectionGaleriaDeFotos__catalogoProductos">
+      <div class="col-md-6 col-sm-12 col-12 mb-3 mt-3 sectionGaleriaDeFotos__catalogoProductos">
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card1" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card2" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card3" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card4" data-item="Malbec">
+          <div class="contenedorGrid__catalogoVinos-imgBox">
+            <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="col-md-6 col-sm-12 col-12 mb-3 mt-3 sectionGaleriaDeFotos__catalogoProductos">
+        <div class="contenedorGrid__catalogoVinos-card" id="card5" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card6" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card7" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
-          <div class="contenedorGrid__catalogoVinos-imgBox">
-            <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
-          </div>
-        </div>
-
-        <div class="contenedorGrid__catalogoVinos-card" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card8" data-item="Malbec">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
@@ -217,7 +217,7 @@
 
   <footer class="contenedorGrid__footer">
 
-    <div class="contenedorGrid__body">
+    <div class="contenedorGrid__body" id="section_contacto">
 
       <div class="contenedorGrid__columInfo-footer contenedorGrid__body--margin">
         
@@ -237,11 +237,11 @@
         <h2 class="contenedorGrid__titulo-columLinks">Enlaces</h2>
 
         <ul class="contenedorGrid__links">
-          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace" href="./index.html">Inicio</a></li>
-          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace" href="./productos.html">Productos</a></li>
-          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace" href="./combos.html">Combos</a></li>
-          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace" href="./nosotros.html">Nosotros</a></li>
-          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace" href="./contacto.html">Contacto</a></li>
+          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace nav_cursor" id="nav_inicio">Inicio</a></li>
+          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace nav_cursor" id="nav_jabones2">Para el cuerpo</a></li>
+          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace nav_cursor" id="nav_velas2">Para el hogar</a></li>
+          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace nav_cursor" id="nav_nosotros2">Nosotros</a></li>
+          <li class="contenedorGrid__links-list"><a class="contenedorGrid__links-enlace nav_cursor" id="nav_contacto2">Contacto</a></li>
         </ul>
       </div>
 
