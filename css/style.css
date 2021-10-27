@@ -105,16 +105,36 @@
           margin-bottom: 16px;
           margin-left: -32px; }
           .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-spanIcon {
-            color: #000;
-            font-size: 20px;
-            margin-right: 10px; }
+            width: 40px;
+            height: 30px;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 3px; }
+            .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-spanIcon .fas {
+              color: #fff;
+              font-size: 20px; }
           .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-span {
             color: #000; }
-          .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info .contenedorGrid__contacto-enlace {
-            color: #000;
-            text-decoration: none; }
-          .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info .contenedorGrid__contacto-enlace:hover {
-            color: #000; }
+          .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info {
+            display: flex;
+            flex-direction: column; }
+            .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info .contenedorGrid__contacto-enlace {
+              color: #000;
+              text-decoration: none; }
+            .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info .contenedorGrid__contacto-enlace:hover {
+              color: #000; }
+            .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info #submit {
+              width: 100px;
+              align-self: flex-end;
+              border-radius: 5px;
+              margin-top: 2px;
+              background-color: #fff; }
+            .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer .contenedorGrid__contacto .contenedorGrid__contacto-list .contenedorGrid__contacto-info #btn_accion {
+              display: none; }
     .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__body--margin {
       margin-right: 30px; }
 

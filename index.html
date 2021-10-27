@@ -157,25 +157,25 @@
 
       <div class="col-md-6 col-sm-12 col-12 mb-3 mt-3 sectionGaleriaDeFotos__catalogoProductos">
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card1" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card1">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card2" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card2">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card3" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card3">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card4" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card4">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
@@ -184,25 +184,25 @@
       </div>
 
       <div class="col-md-6 col-sm-12 col-12 mb-3 mt-3 sectionGaleriaDeFotos__catalogoProductos">
-        <div class="contenedorGrid__catalogoVinos-card" id="card5" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card5">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card6" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card6">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card7" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card7">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
         </div>
 
-        <div class="contenedorGrid__catalogoVinos-card" id="card8" data-item="Malbec">
+        <div class="contenedorGrid__catalogoVinos-card" id="card8">
           <div class="contenedorGrid__catalogoVinos-imgBox">
             <img class="contenedorGrid__catalogoVinos-image" src="./imagenes/jabones/jabones-favoritos.jpg" alt="Catalogo">
           </div>
@@ -249,24 +249,19 @@
         <h2 class="contenedorGrid__titulo-columContacto">Contacto</h2>
         
         <ul class="contenedorGrid__contacto">
-          <li class="contenedorGrid__contacto-list">
-            <span class="contenedorGrid__contacto-spanIcon"><i class="fas fa-map-marker-alt"></i></span>
-            <span class="contenedorGrid__contacto-span">Calle 861,<br>
-              CABA
-              Buenos Aires, <br>
-              1440</span>
-          </li>
-
-          <li class="contenedorGrid__contacto-list">
-            <span class="contenedorGrid__contacto-spanIcon"><i class="fas fa-phone-alt"></i></span>
-            <p class="contenedorGrid__contacto-info"> <a class="contenedorGrid__contacto-enlace" href="tel:1158945672">11 5894 5672</a> </p>
-          </li>
-
-          <li class="contenedorGrid__contacto-list">
-            <span class="contenedorGrid__contacto-spanIcon"><i class="fas fa-envelope"></i></span>
-            <p class="contenedorGrid__contacto-info"> <a class="contenedorGrid__contacto-enlace" href="mailto:mail@gmail.com">mail@gmail.com</a> </p>
-          </li>
           
+          <form id="form" action="">
+            <li class="contenedorGrid__contacto-list">
+              <span class="contenedorGrid__contacto-spanIcon"><i class="fas fa-envelope"></i></span>
+              <p class="contenedorGrid__contacto-info"> 
+                <input class="contenedorGrid__contacto-enlace" id="email" type="email" placeholder="Ingresa tu email"></input>
+                <button id="submit" type="submit" name="button">Suscribirse</button>
+                <button id="btn_accion" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                </button>
+              </p>
+            </li>
+          </form>
+            
         </ul>
       </div>
 
@@ -277,6 +272,23 @@
     <p>2021 Todos los Derechos Reservados | Ignacio Alonso</p>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¡Listo, ya se encuentra suscripto!</h5>
+        </div>
+        <div class="modal-body">
+          Muchas gracias por suscribirse.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -284,6 +296,7 @@
   <script src="./js/bootstrap.js"></script>
   <script src="./js/ecommerce.js"></script>
   <script src="./js/animaciones.js"></script>
+  <script src="./js/formulario.js"></script>
   <script src="https://kit.fontawesome.com/af1d59bc16.js" crossorigin="anonymous"></script>
 </body>
 
