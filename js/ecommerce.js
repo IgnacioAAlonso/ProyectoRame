@@ -211,6 +211,7 @@ jQuery(() => {
   } */
 
   const insertarProductos = () => {
+    console.log("entrando PRODUCTOS");
 
     $.get(URL, (respuesta, estado) => {
       if (estado === "success") {
@@ -266,6 +267,15 @@ jQuery(() => {
         }
 
         comprar();
+
+        /* Pregunto por el localStorage y de existir lo inserto en la canasta */
+      if (carritoLocalStorage) {
+        carritoParse = JSON.parse(carritoLocalStorage);
+
+        for (const producto of carritoParse) {
+          inicializarProductos(producto);
+        }
+      }
       }
     });
   }
@@ -273,7 +283,8 @@ jQuery(() => {
   /* Inicializo la cantidad de los productos a los del localStorage
     Y los inserto en la canasta */
   const inicializarProductos = (productoLocal) => {
-
+    
+    console.log(productos);
     for (const producto of productos) {
       if (producto.id == productoLocal.id) {
         producto.cantidad = productoLocal.cantidad;
@@ -348,14 +359,5 @@ jQuery(() => {
 
 
   insertarProductos();
-
-  /* Pregunto por el localStorage y de existir lo inserto en la canasta */
-  if (carritoLocalStorage) {
-    carritoParse = JSON.parse(carritoLocalStorage);
-
-    for (const producto of carritoParse) {
-      inicializarProductos(producto);
-    }
-  }
 
 });
