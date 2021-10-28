@@ -27,7 +27,9 @@ jQuery(() => {
                 informacion.animate({opacity: 1});
             }
 
-            
+            if (galeria) {
+                galeria = $(".contenedorGrid__catalogoVinos-card");
+            }
             let alturaGaleria = galeria.offset().top;
             if((alturaGaleria - 750) < scroll){
                 $(`#card1`).addClass("mostrarDerecha");

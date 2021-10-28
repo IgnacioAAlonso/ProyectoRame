@@ -104,7 +104,8 @@ $colorText: #000;
                         display: inline-block;
                     }
                     .contenedorGrid__links-enlace:hover{
-                        color: #000;
+                        text-decoration: underline black;
+                        border-bottom: black;
                     }
                 }
             }

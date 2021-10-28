@@ -349,6 +349,10 @@ body{
 .nav_cursor{
     cursor: pointer;
 }
+.nav_cursor:hover{
+    text-decoration: underline black;
+    border-bottom: black;
+}
 
 .mostrarArriba{
     animation: mostrarArriba 1s;

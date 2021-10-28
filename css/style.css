@@ -81,7 +81,8 @@
             margin-bottom: 10px;
             display: inline-block; }
           .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columLinks-footer .contenedorGrid__links .contenedorGrid__links-list .contenedorGrid__links-enlace:hover {
-            color: #000; }
+            text-decoration: underline black;
+            border-bottom: black; }
     .contenedorGrid__footer .contenedorGrid__body .contenedorGrid__columContacto-footer {
       width: calc(35% - 60px);
       margin-right: 0 !important; }
@@ -450,6 +451,10 @@ body {
 
 .nav_cursor {
   cursor: pointer; }
+
+.nav_cursor:hover {
+  text-decoration: underline black;
+  border-bottom: black; }
 
 .mostrarArriba {
   animation: mostrarArriba 1s; }

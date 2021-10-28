@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "imagen": "./imagenes/galeria/jabon-artesanal_amp.jpg"
+    },
+    {
+        "id": 2,
+        "imagen": "./imagenes/galeria/vela-artesanal_amp.jpg"
+    },
+    {
+        "id": 3,
+        "imagen": "./imagenes/galeria/jabones-naturales-para-limpiar-saludablemente-la-piel.jpg"
+    },
+    {
+        "id": 4,
+        "imagen": "./imagenes/galeria/velas-artesanales_aromaticas.jpg"
+    },
+    {
+        "id": 5,
+        "imagen": "./imagenes/galeria/jabones-velas-artesanales-para-el-hogar.jpg"
+    },
+    {
+        "id": 6,
+        "imagen": "./imagenes/galeria/velas-naturales-para-aromatizar-saludablemente-el-hogar.jpg"
+    },
+    {
+        "id": 7,
+        "imagen": "./imagenes/galeria/jabones_velas_artesanales_elegantes.jpg"
+    },
+    {
+        "id": 8,
+        "imagen": "./imagenes/galeria/velas-naturales-para-decorar-el-hogar.jpg"
+    }
+]
