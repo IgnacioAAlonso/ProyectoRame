@@ -5,7 +5,8 @@
     "descripcion":"Parece un jabón pero no lo es: este limpiador en barra limpia la piel sin agredirla, respetando su película protectora natural.", 
     "imagen": "./imagenes/jabones/jabones-favoritos.jpg",
     "precio": "205",
-    "cantidad": 0
+    "cantidad": 0,
+    "stock": 5
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "descripcion":"Este jabon, en equilibrio con el pH de la piel, está enriquecido con aceite de almendras para añadir hidratación al ritual de la limpieza.", 
     "imagen": "./imagenes/jabones/el-mejor-jabon-para-tu-tipo-de-piel-2.jpg",
     "precio": "99",
-    "cantidad": 0
+    "cantidad": 0,
+    "stock": 5
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "descripcion":"Hechas a mano, con cera de soja y mecha de madera son, además, pero que muy estéticas. Esta tiene aroma cítrico a naranja sanguina con notas dulces de almendras verdes.", 
     "imagen": "./imagenes/velas/la-mejor-vela-para-tu-hogar.jpg",
     "precio": "250",
-    "cantidad": 0
+    "cantidad": 0,
+    "stock": 5
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "descripcion":"En colores suaves y formas caprichosas, estas velas prometen generar nuevas formas a medida que se van derritiendo con el tiempo.", 
     "imagen": "./imagenes/velas/la-mejor-vela-para-decourar-tu-hogar.jpg",
     "precio": "315",
-    "cantidad": 0
+    "cantidad": 0,
+    "stock": 5
   }
 ]
