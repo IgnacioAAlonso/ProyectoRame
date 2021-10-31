@@ -456,6 +456,9 @@ body {
   text-decoration: underline black;
   border-bottom: black; }
 
+#btn_iniciar_compra {
+  display: none; }
+
 .mostrarArriba {
   animation: mostrarArriba 1s; }
 

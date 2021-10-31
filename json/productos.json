@@ -15,7 +15,7 @@
     "imagen": "./imagenes/jabones/el-mejor-jabon-para-tu-tipo-de-piel-2.jpg",
     "precio": "99",
     "cantidad": 0,
-    "stock": 5
+    "stock": 1
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "imagen": "./imagenes/velas/la-mejor-vela-para-tu-hogar.jpg",
     "precio": "250",
     "cantidad": 0,
-    "stock": 5
+    "stock": 7
   },
   {
     "id": 4,
@@ -33,6 +33,6 @@
     "imagen": "./imagenes/velas/la-mejor-vela-para-decourar-tu-hogar.jpg",
     "precio": "315",
     "cantidad": 0,
-    "stock": 5
+    "stock": 3
   }
 ]

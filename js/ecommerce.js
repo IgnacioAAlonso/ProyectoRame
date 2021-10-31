@@ -12,7 +12,7 @@ class Carrito {
   }
 }
 
-jQuery(() => {
+//jQuery(() => {
 
   // -------- CONSTANTES ELEMENTOS DEL DOM
   const listadoProductos = document.getElementById("listado");
@@ -111,7 +111,7 @@ jQuery(() => {
 
               <div class="contenedor__eliminar">
                 <b class="contenedor__eliminarCantidad" id="total-${producto.id}">$ ${precioTotal(producto.precio, producto.cantidad)}</b>
-                <a id="eliminar-${producto.id}" ><i class="contenedor__eliminarProducto far fa-trash-alt"></i></a>
+                <a id="eliminar-${producto.id}" class="nav_cursor"><i class="contenedor__eliminarProducto far fa-trash-alt"></i></a>
               </div>
 
               </div>
@@ -348,7 +348,9 @@ jQuery(() => {
     sumaTotalCarritoHTML.html(`$ ${sumaTotalCarrito}`);
   }
 
-
+  const realizarCompra = () => {
+    console.log(productos[1]);
+  }
 
 
   //CÓDIGO
@@ -360,4 +362,4 @@ jQuery(() => {
 
   insertarProductos();
 
-});
+//});

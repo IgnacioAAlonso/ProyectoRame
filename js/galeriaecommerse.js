@@ -1,6 +1,6 @@
-const URL = "json/galeria.json"
+const URL_GALERIA = "json/galeria.json"
 
-$.get(URL, (respuesta, estado) => {
+$.get(URL_GALERIA, (respuesta, estado) => {
     if (estado === "success") {
       for (const foto of respuesta) {
 
