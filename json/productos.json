@@ -6,7 +6,7 @@
     "imagen": "./imagenes/jabones/jabones-favoritos.jpg",
     "precio": "205",
     "cantidad": 0,
-    "stock": 5
+    "stock": 0
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "imagen": "./imagenes/jabones/el-mejor-jabon-para-tu-tipo-de-piel-2.jpg",
     "precio": "99",
     "cantidad": 0,
-    "stock": 1
+    "stock": 0
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "imagen": "./imagenes/velas/la-mejor-vela-para-tu-hogar.jpg",
     "precio": "250",
     "cantidad": 0,
-    "stock": 7
+    "stock": 0
   },
   {
     "id": 4,
@@ -33,6 +33,6 @@
     "imagen": "./imagenes/velas/la-mejor-vela-para-decourar-tu-hogar.jpg",
     "precio": "315",
     "cantidad": 0,
-    "stock": 3
+    "stock": 0
   }
 ]

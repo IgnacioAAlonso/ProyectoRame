@@ -20,6 +20,7 @@ class Carrito {
   const URL = "json/productos.json"
   const contenedorCanasta = document.getElementById("canasta");
   const arrayCanasta = [];
+  const arrayCanastaAux = [];
   const arrayCarrito = [];
   const productos = [];
   arrayCarrito.push(new Carrito(0));
@@ -72,6 +73,7 @@ class Carrito {
       const indexCanasta = arrayCanasta.indexOf(producto);
       arrayCanasta.splice(indexCanasta, 1);
       arrayCanasta.push(producto);
+      arrayCanastaAux.push(producto);
       localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
     }
   }
@@ -127,6 +129,7 @@ class Carrito {
       sumarAlCarrito(producto);
       restarAlCarrito(producto);
       arrayCanasta.push(producto);
+      arrayCanastaAux.push(producto);
       localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
       totalCarrito();
 
@@ -143,6 +146,7 @@ class Carrito {
       const indexCanasta = arrayCanasta.indexOf(producto);
       arrayCanasta.splice(indexCanasta, 1);
       arrayCanasta.push(producto);
+      arrayCanastaAux.push(producto);
       localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
       totalCarrito();
     }
@@ -192,6 +196,7 @@ class Carrito {
     sumarAlCarrito(producto);
     restarAlCarrito(producto);
     arrayCanasta.push(producto);
+    arrayCanastaAux.push(producto);
     localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
     totalCarrito();
   }
@@ -267,6 +272,7 @@ class Carrito {
         }
 
         comprar();
+        insertarStock();
 
         /* Pregunto por el localStorage y de existir lo inserto en la canasta */
       if (carritoLocalStorage) {
@@ -297,11 +303,15 @@ class Carrito {
   /* Agrego el método comprar para el boton de los productos */
   const comprar = () => {
     for (const producto of productos) {
+      
       $(`#boton-${producto.id}`).on("click", function () {
-        insertarCanasta(producto);
-        carritoHTML.html(`${elementoCarrito.cantidad}`);
-        totalCarrito();
+        if (producto.stock > producto.cantidad) {
+          insertarCanasta(producto);
+          carritoHTML.html(`${elementoCarrito.cantidad}`);
+          totalCarrito();
+        }
       });
+    
     }
   }
 
@@ -314,13 +324,13 @@ class Carrito {
 
   /* Agrego el método eliminar producto para el boton del tacho */
   const sumarAlCarrito = (producto) => {
-
-    $(`#cantidadMas-${producto.id}`).on("click", function () {
-      insertarCanasta(producto);
-      carritoHTML.html(`${elementoCarrito.cantidad}`);
-      totalCarrito();
+      $(`#cantidadMas-${producto.id}`).on("click", function () {
+        if (producto.stock > producto.cantidad) { 
+          insertarCanasta(producto);
+          carritoHTML.html(`${elementoCarrito.cantidad}`);
+          totalCarrito();
+        }
     });
-
   }
 
   /* Agrego el método eliminar producto para el boton del tacho */
@@ -348,17 +358,40 @@ class Carrito {
     sumaTotalCarritoHTML.html(`$ ${sumaTotalCarrito}`);
   }
 
+
+  const eliminarCanastaAux = () => {
+    if (arrayCanastaAux[0] != null) {
+      arrayCanastaAux.pop();
+    }
+  }
+  /* Realizo el checkout del carrito */
   const realizarCompra = () => {
-    console.log(productos[1]);
+    for(producto of arrayCanastaAux){
+      producto.stock -= producto.cantidad;
+      eliminarProducto(producto);
+    }
+
+    //Tengo que validar que si no hay stock, sacar el boton de compra y ponerle opacidad
+
+    //Tambien, si en el localStore, hay mas cantidad que Stock, poner la cantidad maxima
+
+    eliminarCanastaAux();
   }
 
+  const insertarStock = () => {
+    for (const producto of productos) {
+      console.log("Stock viejo " + producto.stock);
+      producto.stock = Math.floor(Math.random() * (10 - 1)) + 1;
+      console.log("Stock actual " + producto.stock);
+    }
+  }
 
   //CÓDIGO
   let carritoHTML = $("#cantidadEnElCarrito");
   let carritoParse;
   let sumaTotalCarrito = 0;
   let sumaTotalCarritoHTML = $("#sumaTotalCarrito");
-
+  
 
   insertarProductos();
 
