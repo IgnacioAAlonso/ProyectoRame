@@ -12,3 +12,18 @@ $("#form").on("submit", (e) => {
         })
     }
 });
+
+const formularioProducto = (producto) => {
+    $(`#form-${producto.id}`).on("submit", (e) => {
+        e.preventDefault();
+        const payload = {email: $(`#email-${producto.id}`).val() };
+        if ($(`#email-${producto.id}`).val() != '') {
+            $.post(URL_POST, payload, (respuesta, estado) => {
+                if (estado === "success") {
+                    $(`#form-${producto.id}`).trigger("reset");
+                    $('#btn_accion').trigger("click");
+                };
+            })
+        }
+    });
+}

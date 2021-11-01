@@ -79,6 +79,7 @@ body{
                 .container__favoritos-box{
                     margin-bottom: 100px;
                     opacity: 0;
+                    position: relative;
                     .container__favoritos-jabonesDescripcion{
                         .contenedorCartas{
                             width: 100%;
@@ -127,6 +128,30 @@ body{
                             object-position: 50% 50%;
                         }
                     }
+                    .contenedorCartas__sinStock{
+                        position: absolute;
+                            top: 0;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .contenedorCartas__sinStock-texto{
+                            border: solid black;
+                            height: auto;
+                            padding: 10px;
+                            background-color: #fcedd4;
+                        }
+                        form{
+                            background-color: #fcedd4;
+                            padding: 10px;
+                            border: ridge;
+                            p{
+                                button{
+                                    border-radius: 5px;
+                                    background-color: #fff;
+                                }
+                            }
+                        }
+                    } 
                 }
             }
             .offcanvas__carrito{
@@ -360,6 +385,10 @@ body{
 
 .mostrarArriba{
     animation: mostrarArriba 1s;
+}
+
+.noStock{
+    opacity: 0.5;
 }
 
 @keyframes mostrarArriba{

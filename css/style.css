@@ -254,7 +254,8 @@ body {
       margin: 5% 0 5% 0; }
     body main .sectionFavoritos .container__favoritos .container__favoritos-box {
       margin-bottom: 100px;
-      opacity: 0; }
+      opacity: 0;
+      position: relative; }
       body main .sectionFavoritos .container__favoritos .container__favoritos-box .container__favoritos-jabonesDescripcion .contenedorCartas {
         width: 100%;
         height: 100%;
@@ -289,6 +290,24 @@ body {
         height: 401px;
         object-fit: cover;
         object-position: 50% 50%; }
+      body main .sectionFavoritos .container__favoritos .container__favoritos-box .contenedorCartas__sinStock {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column; }
+        body main .sectionFavoritos .container__favoritos .container__favoritos-box .contenedorCartas__sinStock .contenedorCartas__sinStock-texto {
+          border: solid black;
+          height: auto;
+          padding: 10px;
+          background-color: #fcedd4; }
+        body main .sectionFavoritos .container__favoritos .container__favoritos-box .contenedorCartas__sinStock form {
+          background-color: #fcedd4;
+          padding: 10px;
+          border: ridge; }
+          body main .sectionFavoritos .container__favoritos .container__favoritos-box .contenedorCartas__sinStock form p button {
+            border-radius: 5px;
+            background-color: #fff; }
     body main .sectionFavoritos .offcanvas__carrito .offcanvas__carrito-body .carrito__subtitulos {
       display: flex;
       justify-content: space-between; }
@@ -461,6 +480,9 @@ body {
 
 .mostrarArriba {
   animation: mostrarArriba 1s; }
+
+.noStock {
+  opacity: 0.5; }
 
 @keyframes mostrarArriba {
   0% {

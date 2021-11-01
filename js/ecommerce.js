@@ -146,6 +146,7 @@ class Carrito {
       const indexCanasta = arrayCanasta.indexOf(producto);
       arrayCanasta.splice(indexCanasta, 1);
       arrayCanasta.push(producto);
+      arrayCanastaAux.splice(indexCanasta, 1);
       arrayCanastaAux.push(producto);
       localStorage.setItem("carrito", JSON.stringify(arrayCanasta));
       totalCarrito();
@@ -160,7 +161,13 @@ class Carrito {
 
     /* Por la cantidad que tiene el producto, hago la llamda al agregar al carrito */
     for (let index = 0; index < producto.cantidad; index++) {
-      elementoCarrito.agregarAlCarrito();
+      if ((index + 1) <= producto.stock) {
+        elementoCarrito.agregarAlCarrito();
+      }
+    }
+
+    if (producto.cantidad > producto.stock) {
+      producto.cantidad = producto.stock;
     }
 
     carritoHTML.html(`${elementoCarrito.cantidad}`);
@@ -233,7 +240,7 @@ class Carrito {
           if (producto.id % 2 == 1) {
             $('#listado').append(`
       <div class="row justify-content-center container__favoritos-box" id="${producto.id}">
-      <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion">
+      <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion" id="box-contenido-${producto.id}">
       <div class="contenedorCartas">
           <h2 class="contenedorCartas__titulo">${producto.nombre}</h2>
           <p class="contenedorCartas__texto"> ${producto.descripcion} </p>
@@ -241,22 +248,24 @@ class Carrito {
           <button class="contenedorCartas__enlace" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="boton-${producto.id}">Comprar</button>
       </div>
     </div>
-    <div class="col-12 col-md-6 container__favoritos-jabonesImagen">
+    <div class="col-12 col-md-6 container__favoritos-jabonesImagen" id="box-imagen-${producto.id}">
       <img class="container__jabonesImagen-img" src="${producto.imagen}"
       alt="Imagen de los jabones mas favoritos">
     </div>
+
   </div>
       </div>`);
           } else {
 
             $('#listado').append(`
         <div class="row justify-content-center container__favoritos-box" id="${producto.id}">
-        <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2">
+
+        <div class="col-12 col-md-6 container__favoritos-jabonesImagen oreder-md-1 order-2" id="box-imagen-${producto.id}">
         <img class="container__jabonesImagen-img" src="${producto.imagen}"
           alt="Imagen de los jabones mas favoritos">
       </div>
 
-      <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1">
+      <div class="col-12 col-md-6 container__favoritos-jabonesDescripcion order-md-2 order-1" id="box-contenido-${producto.id}">
         <div class="contenedorCartas">
           <h2 class="contenedorCartas__titulo">${producto.nombre}</h2>
           <p class="contenedorCartas__texto"> ${producto.descripcion} </p>
@@ -264,6 +273,8 @@ class Carrito {
           <button class="contenedorCartas__enlace" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="boton-${producto.id}">Comprar</button>
         </div>
       </div>
+
+      
       </div>`);
 
           }
@@ -371,9 +382,29 @@ class Carrito {
       eliminarProducto(producto);
     }
 
-    //Tengo que validar que si no hay stock, sacar el boton de compra y ponerle opacidad
+    //Tengo que validar que si no hay stock, agregar el texto y ponerle opacidad
+    for(producto of arrayCanastaAux){
+      if (producto.stock <= 0) {
+        $(`#box-contenido-${producto.id}`).addClass("noStock");
+        $(`#box-imagen-${producto.id}`).addClass("noStock");
 
-    //Tambien, si en el localStore, hay mas cantidad que Stock, poner la cantidad maxima
+        $(`#${producto.id}`).append(`
+        <div id="cartel-stock-${producto.id}" class="col-12 col-md-12 d-flex justify-content-center align-items-center contenedorCartas__sinStock">
+          <h2 class="contenedorCartas__sinStock-texto">Sin Stock</h2>
+          
+          <form id="form-${producto.id}" action="">
+          <p>Enterese cuando reingresa el producto</p>
+          <p class="contenedorGrid__contacto-info"> 
+            <input class="contenedorGrid__contacto-enlace" id="email-${producto.id}" type="email" placeholder="Ingresa tu email"></input>
+            <button id="submit" type="submit" name="button">Suscribirse</button>
+          </p>
+      </form>
+        </div>   
+      `);
+
+        formularioProducto(producto);
+      }
+    }
 
     eliminarCanastaAux();
   }
