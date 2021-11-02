@@ -1,3 +1,4 @@
+//Creo la clase del Carrito de compras
 class Carrito {
   constructor(cantidad) {
     this.cantidad = parseInt(cantidad);
@@ -12,24 +13,25 @@ class Carrito {
   }
 }
 
-//jQuery(() => {
 
-  // -------- CONSTANTES ELEMENTOS DEL DOM
-  const listadoProductos = document.getElementById("listado");
-  const precioElementos = document.getElementsByClassName("precio");
-  const URL = "json/productos.json"
-  const contenedorCanasta = document.getElementById("canasta");
-  const arrayCanasta = [];
-  const arrayCanastaAux = [];
-  const arrayCarrito = [];
-  const productos = [];
-  arrayCarrito.push(new Carrito(0));
-  const elementoCarrito = arrayCarrito[0];
-  const carritoLocalStorage = localStorage.getItem("carrito");
+ // -------- CONSTANTES ELEMENTOS DEL DOM
+const listadoProductos = document.getElementById("listado");
+const precioElementos = document.getElementsByClassName("precio");
+const URL = "json/productos.json"
+const contenedorCanasta = document.getElementById("canasta");
+const arrayCanasta = [];
+// Creo una canasta Aux para recorrerla antes de vaciarla
+const arrayCanastaAux = [];
+const arrayCarrito = [];
+const productos = [];
+//Creo el elemento del carrito
+arrayCarrito.push(new Carrito(0));
+const elementoCarrito = arrayCarrito[0];
+const carritoLocalStorage = localStorage.getItem("carrito");
 
-  // -------- FUNCIONES 
+// -------- FUNCIONES 
 
-  /* Con esta función puedo eliminar productos de la canasta */
+/* Con esta función puedo eliminar productos de la canasta */
   const eliminarProducto = (producto) => {
     elementoCarrito.quitarDelCarrito(producto.cantidad);
     producto.cantidad = 0;
@@ -58,15 +60,16 @@ class Carrito {
     elementoCarrito.quitarDelCarrito(1);
     producto.cantidad--;
 
-    let cantidadProducto = $(`#cantidad-${producto.id}`); //document.getElementById(`cantidad-${producto.id}`);
+    let cantidadProducto = $(`#cantidad-${producto.id}`);
     cantidadProducto.html(`${producto.cantidad}`);
-    let totalProducto = $(`#total-${producto.id}`); // document.getElementById(`total-${producto.id}`);
+    let totalProducto = $(`#total-${producto.id}`);
     totalProducto.html(`$ ${precioTotal(producto.precio, producto.cantidad)}`);
 
     /* Retiro el producto y vuelvo a colocarlo con la nueva cantidad
       Ya que fue la forma que pude encontrar para actualizar la cantidad en en localStorage
       Sin agregarlo nuevamente */
 
+    // Pregunto si es el ultimo para eliminarlo
     if (producto.cantidad <= 0) {
       eliminarProducto(producto);
     } else {
@@ -78,9 +81,7 @@ class Carrito {
     }
   }
 
-  /* 
-  Con esta función puedo agregar productos del contenedor a la canasta 
-  */
+  /* Con esta función puedo agregar productos del contenedor a la canasta */
   const insertarCanasta = (producto) => {
 
     elementoCarrito.agregarAlCarrito();
@@ -120,8 +121,7 @@ class Carrito {
     </div>`);
 
       /*
-      Inserto un elemento botón al elemento recientemente creado
-      que contenga la función para poder eliminar el prodcuto de la canasta
+      Inserto las funciones correspondientes al producto dentro del carrito
       */
 
 
@@ -135,7 +135,7 @@ class Carrito {
 
     } else {
       producto.cantidad++;
-      let cantidadProducto = $(`#cantidad-${producto.id}`); //document.getElementById(`cantidad-${producto.id}`);
+      let cantidadProducto = $(`#cantidad-${producto.id}`);
       cantidadProducto.html(`${producto.cantidad}`);
       let totalProducto = $(`#total-${producto.id}`);
       totalProducto.html(`$ ${precioTotal(producto.precio, producto.cantidad)}`);
@@ -194,11 +194,6 @@ class Carrito {
     </div>
     </div>`);
 
-    /* 
-    Inserto un elemento botón al elemento recientemente creado
-    que contenga la función para poder eliminar el prodcuto de la canasta
-    */
-
     eliminar(producto);
     sumarAlCarrito(producto);
     restarAlCarrito(producto);
@@ -211,17 +206,6 @@ class Carrito {
   /* 
     Función para crear productos dinámicamente y crearlos en el contenedor 
   */
-  /* const crearProductos = () => {
-    $.get(URL, (respuesta, estado) => {
-      if (estado === "success") {
-        for (const producto of respuesta) {
-          productos.push(producto);
-          console.log(producto);
-        }
-      }
-    });
-  } */
-
   const insertarProductos = () => {
     console.log("entrando PRODUCTOS");
 
@@ -232,10 +216,7 @@ class Carrito {
         }
 
         for (const producto of productos) {
-          // let contenidoProducto = document.createElement("div");
-          //contenidoProducto.className = "row justify-content-center container__favoritos-box";
-          //contenidoProducto.id = producto.id;
-
+          
           /* Pregunto si son positivos o negativos, ya que quiero ir variando como se muestran en el html */
           if (producto.id % 2 == 1) {
             $('#listado').append(`
@@ -278,10 +259,9 @@ class Carrito {
       </div>`);
 
           }
-
-          //listadoProductos.appendChild(contenidoProducto);
         }
 
+        //Agrego las funciones correspondientes a los productos
         comprar();
         insertarStock();
 
@@ -333,7 +313,7 @@ class Carrito {
     });
   }
 
-  /* Agrego el método eliminar producto para el boton del tacho */
+  /* Agrego el método sumar al carrito con el icono + */
   const sumarAlCarrito = (producto) => {
       $(`#cantidadMas-${producto.id}`).on("click", function () {
         if (producto.stock > producto.cantidad) { 
@@ -344,7 +324,7 @@ class Carrito {
     });
   }
 
-  /* Agrego el método eliminar producto para el boton del tacho */
+  /* Agrego el método restar al carrito con el icono - */
   const restarAlCarrito = (producto) => {
     $(`#cantidadMenos-${producto.id}`).on("click", function () {
       restoProducto(producto);
@@ -369,12 +349,13 @@ class Carrito {
     sumaTotalCarritoHTML.html(`$ ${sumaTotalCarrito}`);
   }
 
-
+  /* Elimino la canasta Auxiliar */
   const eliminarCanastaAux = () => {
     if (arrayCanastaAux[0] != null) {
       arrayCanastaAux.pop();
     }
   }
+
   /* Realizo el checkout del carrito */
   const realizarCompra = () => {
     for(producto of arrayCanastaAux){
@@ -382,7 +363,7 @@ class Carrito {
       eliminarProducto(producto);
     }
 
-    //Tengo que validar que si no hay stock, agregar el texto y ponerle opacidad
+    //Utilizo el auxiliar para recorrer la canasta previamente eliminada
     for(producto of arrayCanastaAux){
       if (producto.stock <= 0) {
         $(`#box-contenido-${producto.id}`).addClass("noStock");
@@ -402,13 +383,16 @@ class Carrito {
         </div>   
       `);
 
+      /* Creo el formulario para recibir actualizacion para nuevo stock */
         formularioProducto(producto);
       }
     }
 
+    /* Elimino la canasta auxiliar una vez terminado el proceso */
     eliminarCanastaAux();
   }
 
+  /* Creo un metodo para agregar un stock aleatorio */
   const insertarStock = () => {
     for (const producto of productos) {
       console.log("Stock viejo " + producto.stock);
@@ -425,5 +409,3 @@ class Carrito {
   
 
   insertarProductos();
-
-//});
